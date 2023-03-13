@@ -1,0 +1,15 @@
+---
+- name: test plauybook
+  hosts: webservers
+  become: true
+  gather_facts: true
+  connection: ssh
+
+  tasks:
+    - name: install docker on nodes
+      yum:
+        name: docker
+        state: installed
+
+    - name: downloading base images
+      shell: docker pull ubuntu
